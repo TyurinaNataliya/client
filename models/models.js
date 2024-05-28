@@ -5,8 +5,14 @@ const User = sequelize.define('user',{
     id: {type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
     email: {type: DataTypes.STRING, unique:true},
     password: {type:DataTypes.STRING},
-    role:{type:DataTypes.STRING, defaultValue:"USER"}
+    role:{type:DataTypes.STRING, defaultValue:"ADMIN"}
 })
+
+const Diagramm= sequelize.define('diagramm',{
+    id: {type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
+    model:{type:DataTypes.STRING,  allowNull: false}
+})
+
 
 const Basket = sequelize.define('basket',{
     id: {type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
@@ -50,9 +56,12 @@ const TypeBrand = sequelize.define('type_brand',{
     id: {type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
 })
 
+User.hasMany(Diagramm)
+Diagramm.belongsTo(User)
 
 User.hasOne(Basket)
 Basket.belongsTo(User)
+
 
 User.hasMany(Rating)
 Rating.belongsTo(User)
