@@ -5,9 +5,9 @@ class DiagrammController {
   async postDiagramm(req, res, next) {
     //добавить диаграмму
     try {
-      const { model } = req.body;
+      const { model } = req.body; // , name
 
-      const diagramm = await Diagramm.create({ model });
+      const diagramm = await Diagramm.create({ model }); // , name
       return res.json(diagramm);
     } catch (e) {
       next(ApiError.badRequest(e.message));
@@ -17,7 +17,7 @@ class DiagrammController {
     //показать все диаграммы
     try {
       const models = await Diagramm.findAll({
-        attributes: ["id", "createdAt"],
+        attributes: ["id", "createdAt"], //, "name"
       });
 
       return res.json(models);
