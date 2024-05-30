@@ -16,7 +16,10 @@ class DiagrammController {
   async getAll(req, res) {
     //показать все диаграммы
     try {
-      const models = await Diagramm.findAll();
+      const models = await Diagramm.findAll({
+        attributes: ["id", "createdAt"],
+      });
+
       return res.json(models);
     } catch (e) {
       next(ApiError.badRequest(e.message));
