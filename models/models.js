@@ -11,7 +11,7 @@ const User = sequelize.define("user", {
 const Diagramm = sequelize.define("diagramm", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   model: { type: DataTypes.TEXT, allowNull: false },
-  // name: { type: DataTypes.TEXT, allowNull: false },
+  name: { type: DataTypes.TEXT, allowNull: true },
 });
 const Basket = sequelize.define("basket", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
